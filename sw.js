@@ -1,5 +1,5 @@
 /* 随手账 Service Worker —— 离线缓存 */
-const CACHE = "sz-cache-v2";
+const CACHE = "sz-cache-v3";
 const ASSETS = [
   "./",
   "./index.html",

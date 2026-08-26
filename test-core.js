@@ -29,6 +29,18 @@ check("installApp 已定义", typeof installApp === "function");
 check("hideInstallBar 已定义", typeof hideInstallBar === "function");
 const homeHtml = document.getElementById("content").innerHTML;
 check("首页渲染出本月结余", homeHtml.includes("本月结余") && homeHtml.includes("最近账单"), homeHtml.slice(0, 80));
+// 分类管理
+const beforeLen = cats.length;
+addCat("宠物");
+check("addCat 添加自定义分类", cats.includes("宠物") && cats.length === beforeLen + 1, "cats=" + cats.join(","));
+addCat("宠物");
+check("addCat 拒绝重复分类", cats.length === beforeLen + 1);
+addCat("  ");
+check("addCat 拒绝空名称", cats.length === beforeLen + 1);
+const idx = cats.indexOf("宠物");
+deleteCat(idx);
+check("deleteCat 删除分类", !cats.includes("宠物") && cats.length === beforeLen);
+check("confirm 弹窗含新分类", mockAI("给猫买猫粮40").length === 1);
 console.log("\\n结果: " + pass + " 通过, " + fail + " 失败");
 if (fail > 0) process.exitCode = 1;
 })();
