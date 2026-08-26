@@ -1,7 +1,8 @@
 /* 随手账 Service Worker —— 离线缓存 */
-const CACHE = "sz-cache-v1";
+const CACHE = "sz-cache-v2";
 const ASSETS = [
   "./",
+  "./index.html",
   "./%E9%9A%8F%E6%89%8B%E8%B4%A6-V0.2.html",
   "./manifest.webmanifest",
   "./icons/icon-192.png",
